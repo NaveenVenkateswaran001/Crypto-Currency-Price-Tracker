@@ -1,0 +1,111 @@
+*{
+     margin: 0px;
+     padding: 0px;
+}
+
+body{
+     background: url('../images/background.png');
+     width: 100%;
+     height: 100vh;
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+     box-sizing: border-box;
+}
+.navbar{
+     padding-top: 2.5%;
+     width: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     padding-right: 3%;
+}
+.brand{
+     display: flex;
+     align-items:center;
+     justify-content: space-between;
+     margin-right: 20px;
+}
+
+.nav-list {
+     flex: 1;
+     padding-top: 1%;
+}
+.nav-list ul li{
+     list-style: none;
+     display: inline-block;
+     margin:0% 2%;
+     border-radius: 13px;
+}
+.brand p{
+     margin: 0px;
+     color: white;
+     font-family: "Saira Stencil One", sans-serif;
+     font-weight: 200;
+     font-size: 20px;
+     letter-spacing: 0.7px;
+}
+.nav-list ul li a{
+     text-decoration: none;
+     color: white;
+     padding: 5px 5px;
+}
+.nav-list ul li a:hover{
+     background-color: #1aa179; 
+     border-radius: 10px;
+     color: white;
+}
+.navbar .brand img{
+     border-radius: 50%;
+}
+.logo{
+     width: 22%;
+}
+.nav-link {
+     font-family: "Josefin Sans", sans-serif;
+}
+.description{
+     color: white;
+     padding: 5%;
+     padding-top: 2.3rem;
+}
+.description span{
+     color: #FFB703;
+}
+.content{
+     font-family: "New Amsterdam", sans-serif;
+     letter-spacing: 0px;
+}
+span{
+     display: block;
+}
+.description #button{
+     background: none;
+     color:#FFB703;
+     text-decoration: none;
+     padding: 4px 13px;
+     font-weight:700;
+     border-radius: 15px;
+     line-height: 2%;
+     border: 2px solid #1aa179;
+}
+.description h1{
+     font-weight: bolder;
+     font-size: 98px;
+}
+.description .tag{
+     letter-spacing: 1px;
+     color: white;
+     font-size: 2rem;
+     font-family: "Voltaire", sans-serif;
+}
+.description .track span {
+     color:#79dfc1;
+     font-size: 1.4rem;
+     font-weight: lighter;
+}
+.description #button:hover{
+     background: #1aa179;
+     color: white;
+     
+}
