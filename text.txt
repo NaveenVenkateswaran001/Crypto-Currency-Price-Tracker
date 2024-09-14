@@ -1,7 +1,0 @@
-message = f"Dear {user.username.capitalize()},
-\n\nWe hope this message finds you well!\n\n
-We have a great news for you! The price of {coin.name} has just Dropped.
-This could be the perfect opportunity to buy!\n\nDetails:\n\nCoin: {coin.name}\n   Price Drop by: {(latest_price)}%\n\n
-Thank you for being a valued member of our community!\n\n
-Best Wishes,\n
-The Crypto Radar Team",           
