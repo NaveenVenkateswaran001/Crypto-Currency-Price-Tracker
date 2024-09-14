@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse,JsonResponse
+from django.http import HttpResponse
 from Crypto_app.models import CoinDetails,MyWallet
 from django.contrib.auth.models import User
 import requests
@@ -39,13 +39,30 @@ def sendMail(coin,user_id,latest_price):
      if latest_price < 0:
           latest_price = (latest_price) * (-1)
 
-     send_mail(
-          subject = f'Price Drop Alert for {coin.name}',
-          message = f"Dear {user.username.capitalize()},\n\nWe hope this message finds you well!\n\nWe have a great news for you! The price of {coin.name} has just Dropped. This could be the perfect opportunity to buy!\n\nDetails:\n\n   Coin: {coin.name}\n   Price Drop by: {(latest_price)}%\n\nThank you for being a valued member of our community!\n\nBest Wishes,\nThe Crypto Radar Team",           
-          from_email='Crypto Radar <n8103836@gmail.com>',
-          recipient_list=[user.email],
-          fail_silently=False
+     subject = f'Price Drop Alert for {coin.name}'
+     message=""
+
+     html_message = (f'''
+          <p><b>Dear {user.username.capitalize()}</b>,</p>
+          <p>We hope this message finds you well! </p>
+          <p>We have a <b>exciting news</b> for you! The price of {coin.name} has just <b>dropped</b>. This could be the <b>perfect opportunity</b> to buy and potentially make the most of this market movement. Time to act quickly before the price moves again!</p>
+          <p><b>Details:</b></p>
+          <ul>
+          <li>Coin : {coin.name} </li>
+          <li>Price Drop by : {latest_price}%</li>
+          </ul>
+          <p>Thank you for being a valued member of our community!</p>
+          <b>Best Wishes</b>,
+          <br><p>The Crypto Radar Team</p>'''
      )
+     send_mail(
+          subject=subject,
+          message=message,
+          from_email='Crypto Radar <crypto.radaar@gmail.com>',
+          recipient_list=[user.email],
+          fail_silently=False,
+          html_message=html_message
+     )     
      
 def checkPrice(current_coins_prices,user_id):
      my_coin = MyWallet.objects.filter(user_id = user_id)
@@ -110,7 +127,7 @@ def coins(request):
      if request.method =='POST':     
           data = call_api(request)
           updateCoins(data,user_id)
-          updated_data = CoinDetails.objects.filter().all().order_by('id')     
+          updated_data = CoinDetails.objects.filter().all().order_by('id')
           return render(request,'coins.html',{'data':updated_data})
      else:
           updated_data = CoinDetails.objects.filter().all().order_by('id')     
